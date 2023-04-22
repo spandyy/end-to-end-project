@@ -1,0 +1,7 @@
+[ 2023-04-22 14:18:17,423 ] 160 numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+[ 2023-04-22 14:18:19,851 ] 224 werkzeug - WARNING -  * Debugger is active!
+[ 2023-04-22 14:18:19,875 ] 224 werkzeug - INFO -  * Debugger PIN: 992-334-794
+[ 2023-04-22 14:18:28,326 ] 224 werkzeug - INFO - 127.0.0.1 - - [22/Apr/2023 14:18:28] "GET / HTTP/1.1" 200 -
+[ 2023-04-22 14:38:57,069 ] 224 werkzeug - INFO - 127.0.0.1 - - [22/Apr/2023 14:38:57] "GET / HTTP/1.1" 200 -
+[ 2023-04-22 14:39:05,454 ] 224 werkzeug - INFO - 127.0.0.1 - - [22/Apr/2023 14:39:05] "GET /predict HTTP/1.1" 200 -
+[ 2023-04-22 14:39:59,691 ] 224 werkzeug - INFO -  * Detected change in 'C:\\Users\\spand\\AppData\\Roaming\\Python\\Python310\\site-packages\\traitlets\\traitlets.py', reloading

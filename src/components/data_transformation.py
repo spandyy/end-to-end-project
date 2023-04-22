@@ -7,11 +7,12 @@ from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OrdinalEncoder,StandardScaler
-
+from data_ingestion import DataIngestion
 from src.exception import CustomException
 from src.logger import logging
 import os
 from src.utils import save_object
+from model_trainer import ModelTrainer
 
 @dataclass
 class DataTransformationConfig:
@@ -80,7 +81,7 @@ class DataTransformation:
 
             logging.info('Obtaining preprocessing object')
 
-            preprocessing_obj = self.get_data_transformation_object()
+            preprocessing_obj = self.get_data_transformation_object() #
 
             target_column_name = 'price'
             drop_columns = [target_column_name,'id']
@@ -91,7 +92,7 @@ class DataTransformation:
             input_feature_test_df=test_df.drop(columns=drop_columns,axis=1)
             target_feature_test_df=test_df[target_column_name]
             
-            ## Trnasformating using preprocessor obj
+            ## Transforming using preprocessor obj
             input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df)
 
@@ -119,3 +120,12 @@ class DataTransformation:
             logging.info("Exception occured in the initiate_datatransformation")
 
             raise CustomException(e,sys)
+        
+        
+if __name__=="__main__":
+    obj=DataIngestion()
+    train_data_path, test_data_path=obj.initiate_data_ingestion()
+    data_transformation=DataTransformation()
+    train_arr, test_arr, _=data_transformation.initaite_data_transformation(train_data_path, test_data_path)
+    model_trainer=ModelTrainer()
+    model_trainer.initate_model_training(train_arr, test_arr)
